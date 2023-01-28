@@ -101,9 +101,4 @@ cards.forEach(card => {
     card.addEventListener("click", flipCard);
 });
 
-    document.getElementById("time-submit").addEventListener("click", function(){
-        var time = document.getElementById("time-input").value;
-        if (time <= 0) {
-            alert("Error: Time must be a positive number.");
-        }
-    });
+
