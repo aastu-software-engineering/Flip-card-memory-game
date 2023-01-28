@@ -85,7 +85,14 @@ function shuffleCard() {
         card.addEventListener("click", flipCard);
     });
 }
+let timeInput = document.querySelector("#time-input"),
+    timeSubmit = document.querySelector("#time-submit");
 
+timeSubmit.addEventListener("click", function () {
+    maxTime = parseInt(timeInput.value);
+    timeLeft = maxTime;
+    timeInput.value = "";
+});
 shuffleCard();
 
 refreshBtn.addEventListener("click", shuffleCard);
