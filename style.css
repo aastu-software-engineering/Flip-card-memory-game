@@ -155,10 +155,47 @@ p {
     border: 2px solid #6563ff;
     transition: 0.3s ease;
 }
-
+ol
+{
+    
+    margin:4px;
+    padding: 10px;
+    color: aliceblue;
+    
+    
+}
+li
+{    padding: 4px;
+     color: #06053f;
+}
 .details button:hover {
     color: #fff;
     background: #6563ff;
+}
+label {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+#time-input {
+    padding: 5px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+#time-submit {
+    padding: 5px 10px;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+#time-submit:hover {
+    background-color: darkblue;
 }
 
 @media screen and (max-width: 700px) {
