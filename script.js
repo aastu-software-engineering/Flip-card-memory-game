@@ -10,16 +10,14 @@ let matchedCard = 0;
 let disableDeck = false;
 let isPlaying = false;
 let cardOne, cardTwo, timer;
-// Show the modal and appropriate message box
-function showModal(messageBox) {
-    
+
+function showModal(msgbox) {
     let modal = document.getElementById("modal");
-    let message = document.getElementById(messageBox);
+    let message = document.getElementById(msgbox);
     modal.style.display = "block";
     message.style.display = "block";
   }
-  
-  // Close the modal and reset message boxes
+ 
   function closeModal() {
     let modal = document.getElementById("modal");
     let messageBoxes = document.getElementsByClassName("message-box");
@@ -28,8 +26,6 @@ function showModal(messageBox) {
       messageBoxes[i].style.display = "none";
     }
   }
-  
-  // Add event listener to close button
   let closeBtn = document.getElementById("close-btn");
   closeBtn.addEventListener("click", closeModal);
   
@@ -42,7 +38,7 @@ function initTimer() {
         }
         return clearInterval(timer);
     }
-    timeLeft--;
+    timeLeft -= 1;
     timeTag.innerText = timeLeft;
 }
 
