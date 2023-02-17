@@ -12,6 +12,7 @@ let isPlaying = false;
 let cardOne, cardTwo, timer;
 // Show the modal and appropriate message box
 function showModal(messageBox) {
+    
     let modal = document.getElementById("modal");
     let message = document.getElementById(messageBox);
     modal.style.display = "block";
