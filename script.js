@@ -13,6 +13,11 @@ let cardOne, cardTwo, timer;
 
 function initTimer() {
     if (timeLeft <= 0) {
+        if (matchedCard == 6) {
+            alert("You Won! :D")
+        } else {
+            alert("You Lost! :(")
+        }
         return clearInterval(timer);
     }
     timeLeft--;
