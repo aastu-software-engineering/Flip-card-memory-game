@@ -10,13 +10,34 @@ let matchedCard = 0;
 let disableDeck = false;
 let isPlaying = false;
 let cardOne, cardTwo, timer;
-
+// Show the modal and appropriate message box
+function showModal(messageBox) {
+    let modal = document.getElementById("modal");
+    let message = document.getElementById(messageBox);
+    modal.style.display = "block";
+    message.style.display = "block";
+  }
+  
+  // Close the modal and reset message boxes
+  function closeModal() {
+    let modal = document.getElementById("modal");
+    let messageBoxes = document.getElementsByClassName("message-box");
+    modal.style.display = "none";
+    for (let i = 0; i < messageBoxes.length; i++) {
+      messageBoxes[i].style.display = "none";
+    }
+  }
+  
+  // Add event listener to close button
+  let closeBtn = document.getElementById("close-btn");
+  closeBtn.addEventListener("click", closeModal);
+  
 function initTimer() {
     if (timeLeft <= 0) {
         if (matchedCard == 6) {
-            alert("You Won! :D")
+            showModal("win-box")
         } else {
-            alert("You Lost! :(")
+            showModal("lose-box")
         }
         return clearInterval(timer);
     }
@@ -48,6 +69,7 @@ function matchCards(img1, img2) {
     if (img1 === img2) {
         matchedCard++;
         if (matchedCard == 6 && timeLeft > 0) {
+            showModal("win-box")
             return clearInterval(timer);
         }
         cardOne.removeEventListener("click", flipCard);
