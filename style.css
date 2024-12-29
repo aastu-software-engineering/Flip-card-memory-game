@@ -30,7 +30,7 @@ body {
   background: #f8f8f8;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin-top: 20px; /* Add margin-top to create space between settings and game card box */
+  margin-top: 50px; /* Increase margin-top to create a larger space between settings and game card box */
 }
 
 .cards,
