@@ -30,6 +30,7 @@ body {
   background: #f8f8f8;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 20px; /* Add margin-top to create space between settings and game card box */
 }
 
 .cards,
@@ -245,6 +246,7 @@ label {
 
 /* The Modal (background) */
 .modal {
+  margin-right: 100px;
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -298,4 +300,59 @@ label {
 #lose-box {
   color: red;
   display: none;
+}
+
+/* Settings Section */
+.settings {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.settings h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.setting-item {
+  margin-bottom: 15px;
+}
+
+.setting-item label {
+  font-size: 18px;
+  color: #333;
+  margin-right: 10px;
+}
+
+.input-field {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100px;
+}
+
+.color-picker {
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #6563ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #4a47d1;
 }
