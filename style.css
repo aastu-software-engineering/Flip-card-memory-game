@@ -356,3 +356,8 @@ label {
 .btn:hover {
   background-color: #4a47d1;
 }
+
+.details .best-score {
+  color: #6563ff;
+  font-weight: bold;
+}

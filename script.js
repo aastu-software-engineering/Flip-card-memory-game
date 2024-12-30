@@ -4,7 +4,10 @@ const cards = document.querySelectorAll(".card"),
   refreshBtn = document.querySelector(".details button"),
   bgColorInput = document.querySelector("#bg-color-input"),
   cardColorInput = document.querySelector("#card-color-input"),
-  applyColorsBtn = document.querySelector("#apply-colors");
+  applyColorsBtn = document.querySelector("#apply-colors"),
+  bestScoreTag = document.querySelector(".best-score b");
+
+console.log("Best score element:", bestScoreTag);
 
 let maxTime = 20;
 let timeLeft = maxTime;
@@ -13,6 +16,11 @@ let matchedCard = 0;
 let disableDeck = false;
 let isPlaying = false;
 let cardOne, cardTwo, timer, hintTimer;
+let bestScore = parseInt(localStorage.getItem("bestScore")) || Infinity;
+
+bestScoreTag.innerText = bestScore === Infinity ? "-" : bestScore;
+
+console.log("Initial best score from localStorage:", localStorage.getItem("bestScore"));
 
 function showModal(msgbox) {
   let modal = document.getElementById("modal");
@@ -54,6 +62,7 @@ function flipCard({ target: clickedCard }) {
   if (clickedCard !== cardOne && !disableDeck && timeLeft > 0) {
     flips++;
     flipsTag.innerText = flips;
+    console.log(`Flips: ${flips}`);
     clickedCard.classList.add("flip");
     if (!cardOne) {
       return (cardOne = clickedCard);
@@ -69,7 +78,17 @@ function flipCard({ target: clickedCard }) {
 function matchCards(img1, img2) {
   if (img1 === img2) {
     matchedCard++;
+    console.log(`Matched pairs: ${matchedCard}, Current flips: ${flips}`);
+    
     if (matchedCard == 6 && timeLeft > 0) {
+      console.log(`Game won! Flips: ${flips}, Current best: ${bestScore}`);
+      
+      if (bestScore === Infinity || flips < bestScore) {
+        bestScore = flips;
+        localStorage.setItem("bestScore", bestScore.toString());
+        bestScoreTag.innerText = bestScore;
+        console.log(`New best score set: ${bestScore}`);
+      }
       showModal("win-box");
       clearInterval(timer);
       clearInterval(hintTimer);
@@ -102,6 +121,15 @@ function shuffleCard() {
   timeTag.innerText = timeLeft;
   flipsTag.innerText = flips;
   disableDeck = isPlaying = false;
+
+  let savedBestScore = localStorage.getItem("bestScore");
+  if (savedBestScore) {
+    bestScore = parseInt(savedBestScore);
+    bestScoreTag.innerText = bestScore;
+  } else {
+    bestScore = Infinity;
+    bestScoreTag.innerText = "-";
+  }
 
   let arr = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
   arr.sort(() => (Math.random() > 0.5 ? 1 : -1));
@@ -152,3 +180,9 @@ applyColorsBtn.addEventListener("click", function () {
     card.querySelector(".view").style.backgroundColor = cardColorInput.value;
   });
 });
+
+function resetBestScore() {
+  bestScore = Infinity;
+  localStorage.removeItem("bestScore");
+  bestScoreTag.innerText = "-";
+}
